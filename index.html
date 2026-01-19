@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casamento Fabio & Patty - 28 de Março de 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        #modal-hoteis {
+  display: none;
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 99999 !important;
+}
+#modal-hoteis.active {
+  display: flex !important;
+}
+#modal-hoteis > div {
+  background: var(--branco);
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow: auto;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  margin-top: 10vh;
+  margin-bottom: 2vh;
+  z-index: 100000 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 600px) {
+  #modal-hoteis > div {
+    padding: 1rem;
+    max-width: 98vw;
+    max-height: 90vh;
+    margin-top: 6vh;
+    margin-bottom: 2vh;
+  }
+}
+        :root {
+            --cream: #f5f0e6;
+            --terracota: #d4a87e;
+            --verde-oliva: #b2c3a3;
+            --azul-suave: #a6bcd0;
+            --marrom-elegante: #5a4a3b;
+            --branco: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--cream);
+            color: var(--marrom-elegante);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--branco);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--marrom-elegante);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            color: var(--terracota);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--cream), var(--azul-suave));
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hearts" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><text x="10" y="15" text-anchor="middle" font-size="12" fill="%23d4a87e" opacity="0.1">♡</text></pattern></defs><rect width="100" height="100" fill="url(%23hearts)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .photo-placeholder {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--terracota);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-size: 1.2rem;
+            border: 5px solid var(--branco);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+       
+
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--terracota);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero .date {
+    font-size: 1.5rem;
+    color: #6b8f4e;
+    margin-bottom: 2rem;
+    font-weight: 500; /* um pouco mais grosso para reforçar a leitura */
+}
+
+        .hero .welcome {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--marrom-elegante);
+            font-style: italic;
+        }
+
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: var(--branco);
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--terracota);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: var(--verde-oliva);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            color: var(--marrom-elegante);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .photo-grid .photo {
+            aspect-ratio: 3/4;
+            background: var(--terracota);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-size: 1rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-grid .photo:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .detail-card {
+            background: var(--branco);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .detail-card i {
+            font-size: 2.5rem;
+            color: var(--terracota);
+            margin-bottom: 1rem;
+        }
+
+        .detail-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--marrom-elegante);
+            margin-bottom: 1rem;
+        }
+
+        .detail-card p {
+            color: var(--marrom-elegante);
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+    header {
+        position: static !important;
+        box-shadow: none !important;
+    }
+}
+
+.map-container,
+.map-container iframe {
+    z-index: 1 !important;
+    position: relative !important;
+}
+
+        .rsvp-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--branco);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--marrom-elegante);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--cream);
+            border-radius: 10px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--terracota);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            background: var(--azul-suave);
+            color: var(--branco);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--terracota);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: var(--verde-oliva);
+        }
+
+        .btn-secondary:hover {
+            background: var(--terracota);
+        }
+
+        .gifts-carousel {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+}
+.gifts-carousel .gift-card {
+    min-width: 300px;
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    background: var(--branco);
+     border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+        .gift-image {
+            height: 200px;
+            background: var(--branco);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--terracota);
+            font-size: 3rem;
+        }
+
+        .gift-content {
+            padding: 1.5rem;
+        }
+
+        .gift-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--marrom-elegante);
+            margin-bottom: 0.5rem;
+        }
+
+        .gift-price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--terracota);
+            margin-bottom: 1rem;
+        }
+
+        .pix-section {
+            background: var(--verde-oliva);
+            color: var(--branco);
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .pix-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .pix-section p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .pix-info {
+            background: var(--branco);
+            color: var(--marrom-elegante);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        footer {
+            background: var(--marrom-elegante);
+            color: var(--cream);
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--terracota);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .footer-links a {
+            color: var(--cream);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--terracota);
+        }
+
+        .success-message {
+            background: var(--verde-oliva);
+            color: var(--branco);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .date {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .event-details {
+                grid-template-columns: 1fr;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="smooth-scroll">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#historia">Nossa História</a></li>
+                <li><a href="#evento">Detalhes</a></li>
+                <li><a href="#rsvp">RSVP</a></li>
+                <li><a href="#presentes">Presentes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+   <section id="inicio" class="hero">
+    <div class="container">
+        <div class="hero-content fade-in">
+            
+<div class="photo-placeholder">
+    <img src="https://drive.google.com/thumbnail?id=1tO4ceOqqE808Ym1sPi75LYK6OByzDkoD&sz=w1000" alt="Foto do casal" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
+</div>
+
+            <h1>Julia & Elio</h1>
+            <p class="date">08 de Novembro de 2025</p>
+            <p class="welcome">Vamos nos casar! Junte-se a nós para uma celebração de amor, família e alegria.</p>
+        </div>
+    </div>
+</section>
+
+    <section id="historia" class="section">
+        <div class="container">
+            <h2 class="fade-in">Nossa História</h2>
+            <div class="story-content fade-in">
+                <div class="story-text">
+                    <p>Nos conhecemos de forma inesperada, numa festa, por meio de amigos em comum — um encontro simples, mas que mudaria tudo. Desde aquele primeiro olhar curioso até hoje, construímos uma história marcada por cumplicidade, afeto e muitos sorrisos.</p>
+                    
+                    <p>São 9 anos juntos, 8 buquês conquistados, e uma espera que só fez crescer o amor. O pedido finalmente chegou em maio, num momento mágico que selou nosso amor </p>
+                    
+                    <p>Agora, chegou a hora de celebrar esse amor com quem fez e faz parte da nossa caminhada — vocês. </p>
+                </div>
+                
+                <div class="photo-grid">
+                    <div class="photo">
+        <img src="https://drive.google.com/thumbnail?id=1Kw-C33CXyQILFSSr73l28KUUE6Axdy11&sz=w1000"
+             alt="Nosso primeiro encontro"
+             style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+    </div>
+                    <div class="photo">
+        <img src="https://drive.google.com/thumbnail?id=1Xpci09dXXtKPZKoFj2v5kjoyLA8eCiTf&sz=w1000" 
+             alt="Viagem especial" 
+             style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+    </div>
+                   <div class="photo photo-landscape">
+        <img src="https://drive.google.com/thumbnail?id=1gPKf7z6ZEebnYJGsF717CEyJi69tvI6-&sz=w1000"
+             alt="Foto especial deitada"
+             style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="evento" class="section">
+        <div class="container">
+            <h2 class="fade-in">Detalhes do Evento</h2>
+            <div class="event-details fade-in">
+                <div class="detail-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Data & Horário</h3>
+                    <p>
+    <strong>28 de Março de 2026</strong><br>
+    Cerimônia às 12h*
+    <br>
+    <span style="font-size: 0.88rem; color: var(--marrom-elegante); font-style: italic;">*Cerimonia irá iniciar nesse horário, ideal chegar antes</span>
+</p>
+</div>
+                
+                <div class="detail-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Local</h3>
+                    <p><strong>Haras Bella Vista</strong><br>
+                    Botucatu, SP</p>
+                </div>
+                
+                <div class="detail-card">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Traje</h3>
+                    <p><strong>Social Completo</strong><br>
+                    </p>
+                </div>
+                
+                <div class="detail-card">
+    <i class="fas fa-bed"></i>
+    <h3>Hospedagem</h3>
+<a href="hoteis.html" class="btn" style="margin-top: 1rem;" target="_blank" rel="noopener">Sugerimos alguns hotéis</a></div>
+     <div class="detail-card">
+                    <i class="fas fa-car"></i>
+                    <h3>Estacionamento</h3>
+                    <p>Estacionamento gratuito disponível no local </p>
+                </div>
+
+                 <div class="detail-card">
+                    <i class="fas fa-taxi"></i>
+                    <h3>Transporte</h3>
+                   <p>
+        <strong>
+            <a href="https://conecta.bio/flashcar" target="_blank" rel="noopener" style="color: var(--terracota); text-decoration: underline;">
+                Flash Car
+            </a>
+        </strong>
+        <br>
+        App de transporte - estará à disposição na saída da festa
+    </p>
+                </div>  
+
+<div id="modal-hoteis" style="display:none;">
+  <div>
+    <button id="fechar-hoteis" style="position:absolute; top:1rem; right:1rem; background:var(--terracota); color:var(--branco); border:none; border-radius:50%; width:2rem; height:2rem; font-size:1.2rem; cursor:pointer;">&times;</button>
+    <h2 style="color:var(--terracota); text-align:center; margin-bottom:1rem;">Hotéis Sugeridos</h2>
+    <div style="color:var(--marrom-elegante); font-size:1.1rem;">
+      <ul style="padding-left:1.2rem;">
+        <li>
+          <span style="font-weight:bold;">Hotel Imigrantes</span><br>
+          Endereço: Av. dos Imigrantes, 1010 - Vale do Sol, São Pedro - SP, 13520-000, (19) 3483-1863
+          <br>
+          <span style="font-weight: normal;">💰 Preço: mais barato 📍 Distância: Um pouco distante </span>
+          <br>
+        </li>
+        <br>
+        <li>
+          <span style="font-weight:bold;">Hotel Thermas Water Park</span><br>
+          Rodovia SP 304, Km 189 - Falar com Laercio 19 3112-3390
+          <br>
+          <span style="font-weight: normal;">💰 Preço: mais alto   📍 Distância: Próximo</span>
+        </li>
+        <br>
+        <li>
+          <span style="font-weight:bold;">LS Villas Hotel & Spa</span><br>
+          R. Joviano Nouer, 155 - Centro, Aguas de São Pedro - SP, 13528-013, (19) 99744-2211
+          <br>
+          <span style="font-weight: normal;">💰 Preço: médio    📍 Distância: médio<br><br><br>Ligar e informar que é para casamento da Julia e Elio</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+// Abrir modal
+const modalHoteis = document.getElementById('modal-hoteis');
+document.getElementById('abrir-hoteis').onclick = function() {
+  modalHoteis.classList.add('active');
+};
+const fecharHoteis = document.getElementById('fechar-hoteis');
+fecharHoteis.onclick = function() {
+  modalHoteis.classList.remove('active');
+};
+modalHoteis.onclick = function(e) {
+  if (e.target === this) this.classList.remove('active');
+};
+</script>
+                
+           
+            </div>
+            
+            <div class="map-container fade-in" style="margin-top: 12rem;">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.4550510075583!2d-47.85179351654047!3d-22.636816326449047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c7b38eaddcf6d5%3A0x41ebddab483da8f9!2sEspa%C3%A7o%20Haras%20Bella%20Vista!5e0!3m2!1spt-BR!2sbr!4v1749392975670!5m2!1spt-BR!2sbr" 
+        width="100%" 
+        height="400" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+    </section>
+
+    <section id="rsvp" class="section">
+        <div class="container">
+            <h2 class="fade-in">Confirmação de Presença</h2>
+            <div class="rsvp-form fade-in">
+                <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">
+                    Sua presença é muito importante para nós! Por favor, confirme até <strong>17 de Agosto de 2025</strong>.
+                </p>
+                
+                <div style="text-align: center;">
+                    <a href="https://docs.google.com/forms/d/1IuOuWCWhtimDBOBTGgPWg4JCLJgjjixVQv6UeqiifuU/viewform" 
+                       target="_blank" 
+                       class="btn">
+                        <i class="fas fa-heart"></i> Confirmar Presença
+                    </a>
+                </div>
+                
+                <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--verde-oliva);">
+                    Clique no botão acima para preencher o formulário de confirmação
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="presentes" class="section">
+        <div class="container">
+         <h2 class="fade-in">Lista de Presentes</h2>
+<div class="fade-in">
+    <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <em>"Sua presença é o nosso maior presente! Mas se quiserem nos presentear, aqui estão algumas sugestões para nossa nova jornada."</em>
+    </p>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+    <button id="gifts-left" class="btn btn-secondary" style="font-size: 1.5rem;"><i class="fas fa-chevron-left"></i></button>
+    <button id="gifts-right" class="btn btn-secondary" style="font-size: 1.5rem;"><i class="fas fa-chevron-right"></i></button>
+</div>
+   <div class="gifts-carousel">
+      <div class="gift-card">
+    <div class="gift-image">
+        <img src="https://drive.google.com/thumbnail?id=1AAU5ipVulVKJ_r3B5yrHBXakfb1nooEI&sz=w1000" alt="TV" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div class="gift-content">
+        <h3>Botox para a noiva</h3>
+        <p class="gift-price">R$ 1 200,00</p>
+        <a href="https://mpago.la/2LsTJYB" class="btn" target="_blank" rel="noopener">
+            <i class="fas fa-gift"></i> Comprar Presente
+        </a>
+    </div>
+</div>
+  <div class="gift-card">
+    <div class="gift-image">
+        <img src="https://drive.google.com/thumbnail?id=1_-n51w675YQOIHdFFBbO-lm2-rNrb0kU&sz=w1000" alt="TV" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div class="gift-content">
+        <h3>Parcela do implante</h3>
+        <p class="gift-price">R$ 1 500,00</p>
+        <a href="https://mpago.la/2aeFPxi" class="btn" target="_blank" rel="noopener">
+            <i class="fas fa-gift"></i> Comprar Presente
+        </a>
+    </div>
+</div>
+
+   <div class="gift-card">
+        <div class="gift-image">
+            <img src="https://brinox.vteximg.com.br/arquivos/ids/276492-1200-800/jogo-de-panelas-brinox-antiaderente-8-pecas-cor-vanilla.jpg?v=638666622912700000" alt="Conjunto de panelas" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+        <div class="gift-content">
+            <h3>Conjunto de panelas</h3>
+            <p class="gift-price">R$ 800,00</p>
+            <a href="https://mpago.la/2V5ozRj" class="btn" target="_blank" rel="noopener">
+                <i class="fas fa-gift"></i> Comprar Presente
+            </a>
+        </div>
+
+</div>
+
+    <div class="gift-card">
+        <div class="gift-image">
+<img src="https://drive.google.com/thumbnail?id=1hh8x6EPnoxCfOYB6XT_Xg8kljhFdtfV4&sz=w1000" alt="Cooktop" style="width: 100%; height: 100%; object-fit: contain;">        </div>
+        <div class="gift-content">
+            <h3>Cooktop</h3>
+            <p class="gift-price">R$ 347,00</p>
+            <a href="https://mpago.la/2PTLLzG" class="btn" target="_blank" rel="noopener">
+                <i class="fas fa-gift"></i> Comprar Presente
+            </a>
+        </div>
+</div>
+
+    <div class="gift-card">
+        <div class="gift-image">
+<img src="https://drive.google.com/thumbnail?id=1oFfZQBNsH9AurW8WYoCcingxX82mj2x_&sz=w1000" alt="Cooktop" style="width: 100%; height: 100%; object-fit: contain;">        </div>
+        <div class="gift-content">
+            <h3>Sofá</h3>
+            <p class="gift-price">R$ 2177,00</p>
+            <a href="https://mpago.la/1RHu5DG" class="btn" target="_blank" rel="noopener">
+                <i class="fas fa-gift"></i> Comprar Presente
+            </a>
+        </div>
+</div>
+
+    <div class="gift-card">
+        <div class="gift-image">
+<img src="https://drive.google.com/thumbnail?id=1BOe6jSe0KX3970Mgxjeghn-wNYH68KuM&sz=w1000" alt="Cooktop" style="width: 100%; height: 100%; object-fit: contain;">        </div>
+        <div class="gift-content">
+            <h3>Frigobar</h3>
+            <p class="gift-price">R$ 1787,00</p>
+            <a href="https://mpago.la/2pjsQA5" class="btn" target="_blank" rel="noopener">
+                <i class="fas fa-gift"></i> Comprar Presente
+            </a>
+        </div>
+</div>
+
+    <div class="gift-card">
+        <div class="gift-image">
+<img src="https://drive.google.com/thumbnail?id=1uQRSBlRdb02qqB6HlgLvLOA9xLcEx-X_&sz=w1000" alt="Cooktop" style="width: 100%; height: 100%; object-fit: contain;">        </div>
+        <div class="gift-content">
+            <h3>Filtro de Agua</h3>
+            <p class="gift-price">R$ 659,00</p>
+            <a href="https://mpago.la/1BWneRp" class="btn" target="_blank" rel="noopener">
+                <i class="fas fa-gift"></i> Comprar Presente
+            </a>
+        </div>
+</div>
+
+    <div class="gift-card">
+        <div class="gift-image">
+<img src="https://drive.google.com/thumbnail?id=1wA1kOPMvw_71iPvIJkSn8EDuWbNkNlhX&sz=w1000" alt="Cooktop" style="width: 100%; height: 100%; object-fit: contain;">        </div>
+        <div class="gift-content">
+            <h3>Mesa de Jantar</h3>
+            <p class="gift-price">R$ 2 257,00</p>
+            <a href="https://mpago.la/2pNvFPg" class="btn" target="_blank" rel="noopener">
+                <i class="fas fa-gift"></i> Comprar Presente
+            </a>
+        </div>
+</div>
+
+
+    <div class="gift-card">
+        <div class="gift-image">
+<img src="https://drive.google.com/thumbnail?id=1NVdgS7CQGORuAyNUJND7VeC_8x5KUmbV&sz=w1000" alt="Cooktop" style="width: 100%; height: 100%; object-fit: contain;">        </div>
+        <div class="gift-content">
+            <h3>Cadeira de Jantar</h3>
+            <p class="gift-price">R$ 1 490,00</p>
+            <a href="https://mpago.la/1kN2PkB" class="btn" target="_blank" rel="noopener">
+                <i class="fas fa-gift"></i> Comprar Presente
+            </a>
+        </div>
+</div>
+
+    <div class="gift-card">
+        <div class="gift-image">
+<img src="https://drive.google.com/thumbnail?id=1mv6r4fN3lI32xm4bdC_Kq4w_28OVzf3l&sz=w1000" alt="Cooktop" style="width: 100%; height: 100%; object-fit: contain;">        </div>
+        <div class="gift-content">
+            <h3>Jogo de talher</h3>
+            <p class="gift-price">R$ 299,00</p>
+            <a href="https://mpago.la/19wRyYD" class="btn" target="_blank" rel="noopener">
+                <i class="fas fa-gift"></i> Comprar Presente
+            </a>
+        </div>
+</div>
+
+
+
+
+        <div class="gift-card">
+           <div class="gift-image">
+         <img src="https://drive.google.com/thumbnail?id=1YKzAlGBJqkje0dB_88lQfOeE4f3yQuPM&sz=w1000" alt="Conjunto de facas" style="width: 100%; height: 100%; object-fit: contain;">        </div>
+            <div class="gift-content">
+                <h3>Conjunto de facas</h3>
+                <p class="gift-price">R$ 430,00</p>
+                <a href="https://mpago.la/1V4J38P" class="btn" target="_blank" rel="noopener">
+                    <i class="fas fa-gift"></i> Comprar Presente
+                </a>
+            </div>
+        </div>
+        <div class="gift-card">
+    <div class="gift-image">
+        <img src="https://drive.google.com/thumbnail?id=1JH7hc9LdAotEd8wD0vVOP-xitcI-ah77&sz=w1000" alt="Conjunto de porcelana" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div class="gift-content">
+        <h3>Jogo de jantar em porcelana</h3>
+        <p class="gift-price">R$ 440,00</p>
+       <a href="https://mpago.la/25QPJHH" class="btn" target="_blank" rel="noopener">
+            <i class="fas fa-gift"></i> Comprar Presente
+        </a>
+    </div>
+</div>
+ <div class="gift-card">
+    <div class="gift-image">
+        <img src="https://drive.google.com/thumbnail?id=1z5cnsctHuJVrTa9CmZ-SJuat4axjj0EL&sz=w1000" alt="Jogo de taças" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div class="gift-content">
+        <h3>Jogo de taças</h3>
+        <p class="gift-price">R$ 350,00</p>
+       <a href="https://mpago.la/1t8SYhY" class="btn" target="_blank" rel="noopener">
+            <i class="fas fa-gift"></i> Comprar Presente
+        </a>
+    </div>
+</div>
+ <div class="gift-card">
+    <div class="gift-image">
+        <img src="https://drive.google.com/thumbnail?id=17h3adPiMBWvT0W_GFBGoz2yJ-H4d3LC8&sz=w1000" alt="Air fryer" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div class="gift-content">
+        <h3>Air fryer</h3>
+        <p class="gift-price">R$ 600,00</p>
+        <a href="https://mpago.la/1rFjqHz" class="btn" target="_blank" rel="noopener">
+            <i class="fas fa-gift"></i> Comprar Presente
+        </a>
+    </div>
+</div>
+ <div class="gift-card">
+    <div class="gift-image">
+        <img src="https://drive.google.com/thumbnail?id=1253VWPYQgHMfu5KJ24LpMBt1EmcDzvWg&sz=w1000" alt="Jogo de cama" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div class="gift-content">
+        <h3>Jogo de cama</h3>
+        <p class="gift-price">R$ 900,00</p>
+        <a href="https://mpago.la/23wpDvL" class="btn" target="_blank" rel="noopener">
+            <i class="fas fa-gift"></i> Comprar Presente
+        </a>
+    </div>
+</div>
+ <div class="gift-card">
+    <div class="gift-image">
+        <img src="https://drive.google.com/thumbnail?id=1Kk6YoZO6J16XlSu9n0q7_L8774jNRznC&sz=w1000" alt="TV" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div class="gift-content">
+        <h3>TV Smart 50"</h3>
+        <p class="gift-price">R$ 2 000,00</p>
+        <a href="https://mpago.la/1YVeKaW" class="btn" target="_blank" rel="noopener">
+            <i class="fas fa-gift"></i> Comprar Presente
+        </a>
+    </div>
+</div>
+        <!-- Novas sugestões -->
+         <div class="gift-card">
+    <div class="gift-image">
+        <img src="https://drive.google.com/thumbnail?id=1ns26fZUNPohNpwlQa8AF_iXt2fOxigGT&sz=w1000" alt="TV" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div class="gift-content">
+        <h3>Cota Lua de Mel</h3>
+        <p class="gift-price">R$ 1 250,00</p>
+        <a href="https://mpago.la/2KgK9ZU" class="btn" target="_blank" rel="noopener">
+            <i class="fas fa-gift"></i> Comprar Presente
+        </a>
+    </div>
+</div>
+       
+      
+           <div class="gift-card">
+    <div class="gift-image">
+        <img src="https://drive.google.com/thumbnail?id=126Oo6ZfZtW6LlOUehZy1k8uUudk3WxyX&sz=w1000" alt="TV" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div class="gift-content">
+        <h3>Micro ondas</h3>
+        <p class="gift-price">R$ 650,00</p>
+        <a href="https://mpago.la/2t7hffq" class="btn" target="_blank" rel="noopener">
+            <i class="fas fa-gift"></i> Comprar Presente
+        </a>
+    </div>
+</div>
+           <div class="gift-card">
+    <div class="gift-image">
+        <img src="https://drive.google.com/thumbnail?id=1IrKWhs4pWzF33OpZy8XAv775QVyUQSAi&sz=w1000" alt="Toalha" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div class="gift-content">
+        <h3>Toalha de banho</h3>
+        <p class="gift-price">R$ 450,00</p>
+        <a href="https://mpago.la/1D7grts" class="btn" target="_blank" rel="noopener">
+            <i class="fas fa-gift"></i> Comprar Presente
+        </a>
+    </div>
+</div>
+           <div class="gift-card">
+    <div class="gift-image">
+        <img src="https://drive.google.com/thumbnail?id=1Dv1_GsTtv84jl4rHly99Hrz3dfLbpXt1&sz=w1000" alt="TV" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div class="gift-content">
+        <h3>Cama de casal</h3>
+        <p class="gift-price">R$ 2 430,00</p>
+        <a href="https://mpago.la/1WHNbQJ" class="btn" target="_blank" rel="noopener">
+            <i class="fas fa-gift"></i> Comprar Presente
+        </a>
+    </div>
+</div>
+        <div class="gift-card">
+    <div class="gift-image">
+        <img src="https://drive.google.com/thumbnail?id=1oEUujE815vB_Vy9KBRTNE7dhlKiJz0-g&sz=w1000" alt="TV" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div class="gift-content">
+        <h3>Geladeira</h3>
+        <p class="gift-price">R$ 4 500,00</p>
+        <a href="https://mpago.la/1ovNVBe" class="btn" target="_blank" rel="noopener">
+            <i class="fas fa-gift"></i> Comprar Presente
+        </a>
+    </div>
+</div>
+                </div>
+                
+                <div class="pix-section">
+    <h3><i class="fas fa-mobile-alt"></i> Presente via PIX</h3>
+    <p>Prefere contribuir com qualquer valor? Use nossa chave PIX!</p>
+    <div class="pix-info" style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+        <span id="pix-key" style="word-break: break-all;">
+            <strong>Chave PIX:</strong> 00020101021126580014br.gov.bcb.pix01361817bdab-5585-4a83-9b29-e65fd7fb14085204000053039865802BR5922ELIO SURACI PICCHIOTTI6009SAO PEDRO62070503***63046354
+        </span>
+        <button id="copy-pix-btn" class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 1rem;">
+            <i class="fas fa-copy"></i> Copiar
+        </button>
+        <span id="copy-success" style="display:none; color: var(--verde-oliva); font-size: 0.95rem; margin-left: 0.5rem;">Copiado!</span>
+    </div>
+    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+        Qualquer valor será recebido com muito carinho e gratidão! ♡
+    </p>
+</div>
+            </div>
+        </div>
+
+        
+    </section>
+<section id="mural" class="section" style="background: var(--branco); margin-top: 3rem;">
+  <div class="container">
+     <h2 class="fade-in">💌 Participe do nosso mural, deixe seu recado</h2>
+    <p style="text-align:center; color:var(--terracota); font-size:1.2rem; margin-bottom:2rem;">A gente vai adorar ler o que você tem a dizer. Pode mandar abraço, história engraçada ou um simples “viva os noivos”! 💕</p>
+    <form id="mural-form" style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: 0 auto;">
+      <input type="text" id="mural-nome" placeholder="Seu nome" required style="padding: 1rem; border-radius: 10px; border: 1px solid var(--cream);">
+      <textarea id="mural-msg" placeholder="Sua mensagem" required style="padding: 1rem; border-radius: 10px; border: 1px solid var(--cream);"></textarea>
+      <button type="submit" class="btn">Enviar mensagem</button>
+    </form>
+    <div id="mural-lista" style="margin-top: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+      <!-- Mensagens aparecerão aqui -->
+    </div>
+  </div>
+</section>
+    <footer>
+        <div class="container">
+            <div class="footer-logo fade-in">J ♡ E</div>
+            <p class="fade-in">Celebrando nosso amor em 08 de Novembro de 2025</p>
+            <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem;">
+                © 2025 Casamento Julia & Elio - Feito com ♡
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // PIX copy button functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const copyBtn = document.getElementById('copy-pix-btn');
+    const pixKeySpan = document.getElementById('pix-key');
+    const successMsg = document.getElementById('copy-success');
+    if (copyBtn && pixKeySpan) {
+        copyBtn.addEventListener('click', function() {
+            // Copia apenas o código PIX sem o texto "Chave PIX:"
+            const pixKey = "00020101021126580014br.gov.bcb.pix01361817bdab-5585-4a83-9b29-e65fd7fb14085204000053039865802BR5922ELIO SURACI PICCHIOTTI6009SAO PEDRO62070503***63046354";
+            navigator.clipboard.writeText(pixKey).then(() => {
+                if (successMsg) {
+                    successMsg.style.display = 'inline';
+                    setTimeout(() => {
+                        successMsg.style.display = 'none';
+                    }, 2000);
+                }
+            });
+        });
+    }
+});
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--branco)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Add some interactive touches
+        document.querySelectorAll('.gift-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-5px) scale(1)';
+            });
+        });
+
+        // Form validation and success message
+        function showSuccessMessage() {
+            const successMsg = document.querySelector('.success-message');
+            if (successMsg) {
+                successMsg.style.display = 'block';
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.querySelector('.gifts-carousel');
+    const btnLeft = document.getElementById('gifts-left');
+    const btnRight = document.getElementById('gifts-right');
+    if (carousel && btnLeft && btnRight) {
+        btnLeft.addEventListener('click', () => {
+            carousel.scrollBy({ left: -320, behavior: 'smooth' });
+        });
+        btnRight.addEventListener('click', () => {
+            carousel.scrollBy({ left: 320, behavior: 'smooth' });
+        });
+    }
+    }); // <-- Adicione este fechamento aqui!
+    </script>
+<!-- Firebase App (core) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<!-- Firebase Database -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+<script>
+  // Cole aqui suas credenciais do Firebase
+  const firebaseConfig = {
+  apiKey: "AIzaSyDJGI8cyMAo6vwgE7tB1eU6VwqdmUWku_g",
+  authDomain: "muralcasamento.firebaseapp.com",
+  databaseURL: "https://muralcasamento-default-rtdb.firebaseio.com",
+  projectId: "muralcasamento",
+  storageBucket: "muralcasamento.firebasestorage.app",
+  messagingSenderId: "161073851547",
+  appId: "1:161073851547:web:eaae2d6e15fb07a86e6a3e",
+  measurementId: "G-9YMCK1PE9Q"
+};
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+</script>
+<script>
+document.getElementById('mural-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const nome = document.getElementById('mural-nome').value.trim();
+  const mensagem = document.getElementById('mural-msg').value.trim();
+  if (nome && mensagem) {
+    db.ref('mural').push({ nome, mensagem, data: Date.now() });
+    this.reset();
+  }
+});
+
+// Atualiza mural em tempo real
+db.ref('mural').on('value', function(snapshot) {
+  const lista = document.getElementById('mural-lista');
+  lista.innerHTML = '';
+  const mensagens = [];
+  snapshot.forEach(child => {
+    mensagens.push(child.val());
+  });
+  // Mostra as mais recentes primeiro
+  mensagens.reverse().forEach(msg => {
+    const div = document.createElement('div');
+    div.style.background = 'var(--cream)';
+    div.style.borderRadius = '10px';
+    div.style.padding = '1rem';
+    div.style.marginBottom = '1rem';
+    div.innerHTML = `<strong>${msg.nome}</strong><br>${msg.mensagem}`;
+    lista.appendChild(div);
+  });
+});
+</script>
+</body>
+</html>
