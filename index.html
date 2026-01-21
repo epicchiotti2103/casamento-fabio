@@ -18,6 +18,27 @@
   justify-content: center;
   z-index: 99999 !important;
 }
+#evento.section{
+  background: #FAF6FF; /* lavanda bem suave */
+}
+
+#evento .map-container{
+  margin-top: 2.5rem !important;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+#evento .map-container iframe{
+  border-radius: 12px;
+  display: block;
+}
+
+#pix.hero{
+  background: linear-gradient(135deg, #FAF6FF, #F1E7FA);
+  padding: 80px 0; /* deixa menos "hero" e mais seção */
+}
 #modal-hoteis.active {
   display: flex !important;
 }
@@ -48,13 +69,25 @@
   }
 }
         :root {
-            --cream: #f5f0e6;
-            --terracota: #d4a87e;
-            --verde-oliva: #b2c3a3;
-            --azul-suave: #a6bcd0;
-            --marrom-elegante: #5a4a3b;
-            --branco: #ffffff;
-        }
+    /* Amarelos da pétala */
+    --amarelo-claro: #F7DE7A;
+    --amarelo-principal: #F2C94C;
+    --amarelo-dourado: #E0B23E;
+
+    /* Centro da flor */
+    --marrom-escuro: #3A2A1A;
+    --marrom-medio: #5C4632;
+
+    /* Fundos suaves */
+    --fundo-claro: #FAF7F3;
+    --fundo-suave: #E6D2C8;
+
+    /* Base */
+    --branco: #ffffff;
+
+    --roxo-suave: #CBB6D8;      /* lavanda do fundo */
+--roxo-profundo: #5A3A73;   /* opção mais forte p/ detalhes */
+}
 
         * {
             margin: 0;
@@ -64,8 +97,8 @@
 
         body {
             font-family: 'Lato', sans-serif;
-            background-color: var(--cream);
-            color: var(--marrom-elegante);
+            background-color: var(--fundo-claro);
+    color: var(--marrom-escuro);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -112,7 +145,11 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, var(--cream), var(--azul-suave));
+            background: linear-gradient(
+        135deg,
+        var(--amarelo-claro),
+        var(--fundo-suave)
+    );
             padding: 120px 0 80px;
             text-align: center;
             position: relative;
@@ -154,14 +191,14 @@
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
-            color: var(--terracota);
+            color: var(--marrom-escuro);
             margin-bottom: 1rem;
             font-weight: 700;
         }
 
         .hero .date {
     font-size: 1.5rem;
-    color: #6b8f4e;
+    color: var(--amarelo-dourado);
     margin-bottom: 2rem;
     font-weight: 500; /* um pouco mais grosso para reforçar a leitura */
 }
@@ -187,7 +224,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             text-align: center;
-            color: var(--terracota);
+             color: var(--marrom-escuro);
             margin-bottom: 3rem;
             position: relative;
         }
@@ -196,7 +233,7 @@
             content: '';
             width: 60px;
             height: 3px;
-            background: var(--verde-oliva);
+            background: var(--amarelo-principal);
             position: absolute;
             bottom: -10px;
             left: 50%;
@@ -314,22 +351,23 @@
 
         .form-group input,
         .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--cream);
-            border-radius: 10px;
-            font-family: 'Lato', sans-serif;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
+        .form-group input,
+.form-group select,
+.form-group textarea,
+#mural-form input,
+#mural-form textarea {
+    border: 1.5px solid #E3D7F0;   /* lavanda médio */
+    background: #FFFFFF;
+}
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--terracota);
-        }
+.form-group input:focus,
+.form-group textarea:focus,
+#mural-form input:focus,
+#mural-form textarea:focus {
+    outline: none;
+    border-color: #5A3A73;         /* roxo elegante */
+    box-shadow: 0 0 0 3px rgba(90, 58, 115, 0.12);
+}
 
         .radio-group {
             display: flex;
@@ -344,7 +382,12 @@
         }
 
         .btn {
-            background: var(--azul-suave);
+             background: linear-gradient(
+        135deg,
+        var(--amarelo-principal),
+        var(--amarelo-dourado)
+    );
+    color: var(--marrom-escuro);
             color: var(--branco);
             padding: 1rem 2rem;
             border: none;
@@ -360,17 +403,18 @@
         }
 
         .btn:hover {
-            background: var(--terracota);
+            background: var(--amarelo-dourado);
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
         .btn-secondary {
-            background: var(--verde-oliva);
+            background: linear-gradient(135deg, var(--amarelo-principal), var(--amarelo-dourado));
+    color: var(--marrom-escuro);
         }
 
         .btn-secondary:hover {
-            background: var(--terracota);
+             background: var(--amarelo-dourado);
         }
 
         .gifts-carousel {
@@ -421,8 +465,12 @@
         }
 
         .pix-section {
-            background: var(--verde-oliva);
-            color: var(--branco);
+            background: linear-gradient(
+        135deg,
+        var(--roxo-suave),
+        var(--roxo-profundo)
+    );
+    color: var(--branco);
             padding: 3rem;
             border-radius: 15px;
             text-align: center;
@@ -441,16 +489,16 @@
         }
 
         .pix-info {
-            background: var(--branco);
-            color: var(--marrom-elegante);
+             background: var(--branco);
+    color: var(--marrom-escuro);
             padding: 1.5rem;
             border-radius: 10px;
             margin-top: 1rem;
         }
 
         footer {
-            background: var(--marrom-elegante);
-            color: var(--cream);
+             background: var(--marrom-escuro);
+    color: var(--fundo-claro);
             text-align: center;
             padding: 3rem 0;
         }
@@ -459,7 +507,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 3rem;
             margin-bottom: 1rem;
-            color: var(--terracota);
+            color: var(--amarelo-principal);
         }
 
         .footer-links {
@@ -531,6 +579,29 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        #mural-form input,
+#mural-form textarea {
+  border: 2px solid #E3D7F0 !important;   /* lavanda médio (aparece) */
+  background: #FFFFFF !important;
+  color: #3A2A1A !important;
+  border-radius: 12px !important;
+}
+
+/* placeholder mais visível */
+#mural-form input::placeholder,
+#mural-form textarea::placeholder {
+  color: #6B6B6B !important;
+  opacity: 1 !important;
+}
+
+/* foco bonito */
+#mural-form input:focus,
+#mural-form textarea:focus {
+  outline: none !important;
+  border-color: #5A3A73 !important;       /* roxo */
+  box-shadow: 0 0 0 4px rgba(90, 58, 115, 0.14) !important;
+}
     </style>
 </head>
 <body class="smooth-scroll">
@@ -541,7 +612,7 @@
                 <li><a href="#historia">Nossa História</a></li>
                 <li><a href="#evento">Detalhes</a></li>
                 <li><a href="#rsvp">RSVP</a></li>
-                <li><a href="#presentes">Presentes</a></li>
+                <li><a href="#pix">Presentes</a></li>
             </ul>
         </nav>
     </header>
@@ -551,8 +622,9 @@
         <div class="hero-content fade-in">
             
 <div class="photo-placeholder">
-    <img src="https://drive.google.com/thumbnail?id=1tO4ceOqqE808Ym1sPi75LYK6OByzDkoD&sz=w1000" alt="Foto do casal" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
+    <img src="https://drive.google.com/thumbnail?id=1N9L1-t8UhLS3W3mYizgncYHxnZQYU1gH&sz=w1000" alt="Foto do casal" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
 </div>
+
 
             <h1>Fabio & Patty</h1>
             <p class="date">28 de Março de 2026</p>
@@ -575,17 +647,22 @@
                 
                 <div class="photo-grid">
                     <div class="photo">
-        <img src="https://drive.google.com/thumbnail?id=1Kw-C33CXyQILFSSr73l28KUUE6Axdy11&sz=w1000"
+        <img src="https://drive.google.com/thumbnail?id=14FveDxiGagK8fWn0rUDhr6D9hs112Be9&sz=w1000"
              alt="Nosso primeiro encontro"
              style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
     </div>
                     <div class="photo">
-        <img src="https://drive.google.com/thumbnail?id=1Xpci09dXXtKPZKoFj2v5kjoyLA8eCiTf&sz=w1000" 
+        <img src="https://drive.google.com/thumbnail?id=1_An3ek0poaGojVTUVUGyQZmT4qb0LhAR&sz=w1000" 
              alt="Viagem especial" 
              style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
     </div>
                    <div class="photo photo-landscape">
-        <img src="https://drive.google.com/thumbnail?id=1gPKf7z6ZEebnYJGsF717CEyJi69tvI6-&sz=w1000"
+        <img src="https://drive.google.com/thumbnail?id=1aMvAhbOeCVcsjf6pLpoLBedPrLI5uVRT&sz=w1000"
+             alt="Foto especial deitada"
+             style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+    </div>
+      <div class="photo photo-landscape">
+        <img src="https://drive.google.com/thumbnail?id=1lQvmIbn8O9CovqUz2jSgHs_EL63rpS-H&sz=w1000"
              alt="Foto especial deitada"
              style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
     </div>
@@ -612,101 +689,40 @@
                 <div class="detail-card">
                     <i class="fas fa-map-marker-alt"></i>
                     <h3>Local</h3>
-                    <p><strong>Haras Bella Vista</strong><br>
+                    <p><strong>Espaço Andrioli</strong><br>
                     Botucatu, SP</p>
                 </div>
                 
                 <div class="detail-card">
                     <i class="fas fa-tshirt"></i>
                     <h3>Traje</h3>
-                    <p><strong>Social Completo</strong><br>
+                    <p><strong>Esporte chique</strong><br>
                     </p>
                 </div>
                 
                 <div class="detail-card">
-    <i class="fas fa-bed"></i>
-    <h3>Hospedagem</h3>
-<a href="hoteis.html" class="btn" style="margin-top: 1rem;" target="_blank" rel="noopener">Sugerimos alguns hotéis</a></div>
-     <div class="detail-card">
+    
+   
                     <i class="fas fa-car"></i>
                     <h3>Estacionamento</h3>
                     <p>Estacionamento gratuito disponível no local </p>
                 </div>
 
-                 <div class="detail-card">
-                    <i class="fas fa-taxi"></i>
-                    <h3>Transporte</h3>
-                   <p>
-        <strong>
-            <a href="https://conecta.bio/flashcar" target="_blank" rel="noopener" style="color: var(--terracota); text-decoration: underline;">
-                Flash Car
-            </a>
-        </strong>
-        <br>
-        App de transporte - estará à disposição na saída da festa
-    </p>
-                </div>  
+                 
 
-<div id="modal-hoteis" style="display:none;">
-  <div>
-    <button id="fechar-hoteis" style="position:absolute; top:1rem; right:1rem; background:var(--terracota); color:var(--branco); border:none; border-radius:50%; width:2rem; height:2rem; font-size:1.2rem; cursor:pointer;">&times;</button>
-    <h2 style="color:var(--terracota); text-align:center; margin-bottom:1rem;">Hotéis Sugeridos</h2>
-    <div style="color:var(--marrom-elegante); font-size:1.1rem;">
-      <ul style="padding-left:1.2rem;">
-        <li>
-          <span style="font-weight:bold;">Hotel Imigrantes</span><br>
-          Endereço: Av. dos Imigrantes, 1010 - Vale do Sol, São Pedro - SP, 13520-000, (19) 3483-1863
-          <br>
-          <span style="font-weight: normal;">💰 Preço: mais barato 📍 Distância: Um pouco distante </span>
-          <br>
-        </li>
-        <br>
-        <li>
-          <span style="font-weight:bold;">Hotel Thermas Water Park</span><br>
-          Rodovia SP 304, Km 189 - Falar com Laercio 19 3112-3390
-          <br>
-          <span style="font-weight: normal;">💰 Preço: mais alto   📍 Distância: Próximo</span>
-        </li>
-        <br>
-        <li>
-          <span style="font-weight:bold;">LS Villas Hotel & Spa</span><br>
-          R. Joviano Nouer, 155 - Centro, Aguas de São Pedro - SP, 13528-013, (19) 99744-2211
-          <br>
-          <span style="font-weight: normal;">💰 Preço: médio    📍 Distância: médio<br><br><br>Ligar e informar que é para casamento da Julia e Elio</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<script>
-// Abrir modal
-const modalHoteis = document.getElementById('modal-hoteis');
-document.getElementById('abrir-hoteis').onclick = function() {
-  modalHoteis.classList.add('active');
-};
-const fecharHoteis = document.getElementById('fechar-hoteis');
-fecharHoteis.onclick = function() {
-  modalHoteis.classList.remove('active');
-};
-modalHoteis.onclick = function(e) {
-  if (e.target === this) this.classList.remove('active');
-};
-</script>
                 
            
             </div>
             
             <div class="map-container fade-in" style="margin-top: 12rem;">
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.4550510075583!2d-47.85179351654047!3d-22.636816326449047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c7b38eaddcf6d5%3A0x41ebddab483da8f9!2sEspa%C3%A7o%20Haras%20Bella%20Vista!5e0!3m2!1spt-BR!2sbr!4v1749392975670!5m2!1spt-BR!2sbr" 
-        width="100%" 
-        height="400" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
+ <iframe
+  src="https://www.google.com/maps?q=R.+Jandiro+Vilas+Bôas,+746,+Chácara+Recreio+Vista+Alegre,+Botucatu+-+SP&output=embed"
+  width="100%" 
+  height="400" 
+  style="border:0;" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
 </div>
     </section>
 
@@ -715,11 +731,11 @@ modalHoteis.onclick = function(e) {
             <h2 class="fade-in">Confirmação de Presença</h2>
             <div class="rsvp-form fade-in">
                 <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">
-                    Sua presença é muito importante para nós! Por favor, confirme até <strong>17 de Agosto de 2025</strong>.
+                    Sua presença é muito importante para nós! Por favor, confirme até <strong>03 de Fevereiro de 2026</strong>.
                 </p>
                 
                 <div style="text-align: center;">
-                    <a href="https://docs.google.com/forms/d/1IuOuWCWhtimDBOBTGgPWg4JCLJgjjixVQv6UeqiifuU/viewform" 
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScLZnIsL1y5LjjLJqNAcC3W2V6LTg-auQMpSTFy3lupz0b71A/viewform?usp=publish-editor" 
                        target="_blank" 
                        class="btn">
                         <i class="fas fa-heart"></i> Confirmar Presença
@@ -727,306 +743,55 @@ modalHoteis.onclick = function(e) {
                 </div>
                 
                 <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--verde-oliva);">
-                    Clique no botão acima para preencher o formulário de confirmação
-                </p>
+    Clique no botão acima para preencher o formulário de confirmação.
+</p>
+
+<p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--verde-oliva);">
+    Caso tenha dificuldades para confirmar<br>
+    entre em contato com Maria Angélica pelo número <a href="tel:+5514996215946">(14) 99621-5946</a>
+</p>
             </div>
         </div>
     </section>
 
-    <section id="presentes" class="section">
-        <div class="container">
-         <h2 class="fade-in">Lista de Presentes</h2>
-<div class="fade-in">
-    <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-        <em>"Sua presença é o nosso maior presente! Mas se quiserem nos presentear, aqui estão algumas sugestões para nossa nova jornada."</em>
-    </p>
-    <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
-    <button id="gifts-left" class="btn btn-secondary" style="font-size: 1.5rem;"><i class="fas fa-chevron-left"></i></button>
-    <button id="gifts-right" class="btn btn-secondary" style="font-size: 1.5rem;"><i class="fas fa-chevron-right"></i></button>
-</div>
-   <div class="gifts-carousel">
-      <div class="gift-card">
-    <div class="gift-image">
-        <img src="https://drive.google.com/thumbnail?id=1AAU5ipVulVKJ_r3B5yrHBXakfb1nooEI&sz=w1000" alt="TV" style="width: 100%; height: 100%; object-fit: contain;">
-    </div>
-    <div class="gift-content">
-        <h3>Botox para a noiva</h3>
-        <p class="gift-price">R$ 1 200,00</p>
-        <a href="https://mpago.la/2LsTJYB" class="btn" target="_blank" rel="noopener">
-            <i class="fas fa-gift"></i> Comprar Presente
-        </a>
-    </div>
-</div>
-  <div class="gift-card">
-    <div class="gift-image">
-        <img src="https://drive.google.com/thumbnail?id=1_-n51w675YQOIHdFFBbO-lm2-rNrb0kU&sz=w1000" alt="TV" style="width: 100%; height: 100%; object-fit: contain;">
-    </div>
-    <div class="gift-content">
-        <h3>Parcela do implante</h3>
-        <p class="gift-price">R$ 1 500,00</p>
-        <a href="https://mpago.la/2aeFPxi" class="btn" target="_blank" rel="noopener">
-            <i class="fas fa-gift"></i> Comprar Presente
-        </a>
-    </div>
-</div>
 
-   <div class="gift-card">
-        <div class="gift-image">
-            <img src="https://brinox.vteximg.com.br/arquivos/ids/276492-1200-800/jogo-de-panelas-brinox-antiaderente-8-pecas-cor-vanilla.jpg?v=638666622912700000" alt="Conjunto de panelas" style="width: 100%; height: 100%; object-fit: contain;">
-        </div>
-        <div class="gift-content">
-            <h3>Conjunto de panelas</h3>
-            <p class="gift-price">R$ 800,00</p>
-            <a href="https://mpago.la/2V5ozRj" class="btn" target="_blank" rel="noopener">
-                <i class="fas fa-gift"></i> Comprar Presente
-            </a>
-        </div>
-
-</div>
-
-    <div class="gift-card">
-        <div class="gift-image">
-<img src="https://drive.google.com/thumbnail?id=1hh8x6EPnoxCfOYB6XT_Xg8kljhFdtfV4&sz=w1000" alt="Cooktop" style="width: 100%; height: 100%; object-fit: contain;">        </div>
-        <div class="gift-content">
-            <h3>Cooktop</h3>
-            <p class="gift-price">R$ 347,00</p>
-            <a href="https://mpago.la/2PTLLzG" class="btn" target="_blank" rel="noopener">
-                <i class="fas fa-gift"></i> Comprar Presente
-            </a>
-        </div>
-</div>
-
-    <div class="gift-card">
-        <div class="gift-image">
-<img src="https://drive.google.com/thumbnail?id=1oFfZQBNsH9AurW8WYoCcingxX82mj2x_&sz=w1000" alt="Cooktop" style="width: 100%; height: 100%; object-fit: contain;">        </div>
-        <div class="gift-content">
-            <h3>Sofá</h3>
-            <p class="gift-price">R$ 2177,00</p>
-            <a href="https://mpago.la/1RHu5DG" class="btn" target="_blank" rel="noopener">
-                <i class="fas fa-gift"></i> Comprar Presente
-            </a>
-        </div>
-</div>
-
-    <div class="gift-card">
-        <div class="gift-image">
-<img src="https://drive.google.com/thumbnail?id=1BOe6jSe0KX3970Mgxjeghn-wNYH68KuM&sz=w1000" alt="Cooktop" style="width: 100%; height: 100%; object-fit: contain;">        </div>
-        <div class="gift-content">
-            <h3>Frigobar</h3>
-            <p class="gift-price">R$ 1787,00</p>
-            <a href="https://mpago.la/2pjsQA5" class="btn" target="_blank" rel="noopener">
-                <i class="fas fa-gift"></i> Comprar Presente
-            </a>
-        </div>
-</div>
-
-    <div class="gift-card">
-        <div class="gift-image">
-<img src="https://drive.google.com/thumbnail?id=1uQRSBlRdb02qqB6HlgLvLOA9xLcEx-X_&sz=w1000" alt="Cooktop" style="width: 100%; height: 100%; object-fit: contain;">        </div>
-        <div class="gift-content">
-            <h3>Filtro de Agua</h3>
-            <p class="gift-price">R$ 659,00</p>
-            <a href="https://mpago.la/1BWneRp" class="btn" target="_blank" rel="noopener">
-                <i class="fas fa-gift"></i> Comprar Presente
-            </a>
-        </div>
-</div>
-
-    <div class="gift-card">
-        <div class="gift-image">
-<img src="https://drive.google.com/thumbnail?id=1wA1kOPMvw_71iPvIJkSn8EDuWbNkNlhX&sz=w1000" alt="Cooktop" style="width: 100%; height: 100%; object-fit: contain;">        </div>
-        <div class="gift-content">
-            <h3>Mesa de Jantar</h3>
-            <p class="gift-price">R$ 2 257,00</p>
-            <a href="https://mpago.la/2pNvFPg" class="btn" target="_blank" rel="noopener">
-                <i class="fas fa-gift"></i> Comprar Presente
-            </a>
-        </div>
-</div>
-
-
-    <div class="gift-card">
-        <div class="gift-image">
-<img src="https://drive.google.com/thumbnail?id=1NVdgS7CQGORuAyNUJND7VeC_8x5KUmbV&sz=w1000" alt="Cooktop" style="width: 100%; height: 100%; object-fit: contain;">        </div>
-        <div class="gift-content">
-            <h3>Cadeira de Jantar</h3>
-            <p class="gift-price">R$ 1 490,00</p>
-            <a href="https://mpago.la/1kN2PkB" class="btn" target="_blank" rel="noopener">
-                <i class="fas fa-gift"></i> Comprar Presente
-            </a>
-        </div>
-</div>
-
-    <div class="gift-card">
-        <div class="gift-image">
-<img src="https://drive.google.com/thumbnail?id=1mv6r4fN3lI32xm4bdC_Kq4w_28OVzf3l&sz=w1000" alt="Cooktop" style="width: 100%; height: 100%; object-fit: contain;">        </div>
-        <div class="gift-content">
-            <h3>Jogo de talher</h3>
-            <p class="gift-price">R$ 299,00</p>
-            <a href="https://mpago.la/19wRyYD" class="btn" target="_blank" rel="noopener">
-                <i class="fas fa-gift"></i> Comprar Presente
-            </a>
-        </div>
-</div>
-
-
-
-
-        <div class="gift-card">
-           <div class="gift-image">
-         <img src="https://drive.google.com/thumbnail?id=1YKzAlGBJqkje0dB_88lQfOeE4f3yQuPM&sz=w1000" alt="Conjunto de facas" style="width: 100%; height: 100%; object-fit: contain;">        </div>
-            <div class="gift-content">
-                <h3>Conjunto de facas</h3>
-                <p class="gift-price">R$ 430,00</p>
-                <a href="https://mpago.la/1V4J38P" class="btn" target="_blank" rel="noopener">
-                    <i class="fas fa-gift"></i> Comprar Presente
-                </a>
-            </div>
-        </div>
-        <div class="gift-card">
-    <div class="gift-image">
-        <img src="https://drive.google.com/thumbnail?id=1JH7hc9LdAotEd8wD0vVOP-xitcI-ah77&sz=w1000" alt="Conjunto de porcelana" style="width: 100%; height: 100%; object-fit: contain;">
-    </div>
-    <div class="gift-content">
-        <h3>Jogo de jantar em porcelana</h3>
-        <p class="gift-price">R$ 440,00</p>
-       <a href="https://mpago.la/25QPJHH" class="btn" target="_blank" rel="noopener">
-            <i class="fas fa-gift"></i> Comprar Presente
-        </a>
-    </div>
-</div>
- <div class="gift-card">
-    <div class="gift-image">
-        <img src="https://drive.google.com/thumbnail?id=1z5cnsctHuJVrTa9CmZ-SJuat4axjj0EL&sz=w1000" alt="Jogo de taças" style="width: 100%; height: 100%; object-fit: contain;">
-    </div>
-    <div class="gift-content">
-        <h3>Jogo de taças</h3>
-        <p class="gift-price">R$ 350,00</p>
-       <a href="https://mpago.la/1t8SYhY" class="btn" target="_blank" rel="noopener">
-            <i class="fas fa-gift"></i> Comprar Presente
-        </a>
-    </div>
-</div>
- <div class="gift-card">
-    <div class="gift-image">
-        <img src="https://drive.google.com/thumbnail?id=17h3adPiMBWvT0W_GFBGoz2yJ-H4d3LC8&sz=w1000" alt="Air fryer" style="width: 100%; height: 100%; object-fit: contain;">
-    </div>
-    <div class="gift-content">
-        <h3>Air fryer</h3>
-        <p class="gift-price">R$ 600,00</p>
-        <a href="https://mpago.la/1rFjqHz" class="btn" target="_blank" rel="noopener">
-            <i class="fas fa-gift"></i> Comprar Presente
-        </a>
-    </div>
-</div>
- <div class="gift-card">
-    <div class="gift-image">
-        <img src="https://drive.google.com/thumbnail?id=1253VWPYQgHMfu5KJ24LpMBt1EmcDzvWg&sz=w1000" alt="Jogo de cama" style="width: 100%; height: 100%; object-fit: contain;">
-    </div>
-    <div class="gift-content">
-        <h3>Jogo de cama</h3>
-        <p class="gift-price">R$ 900,00</p>
-        <a href="https://mpago.la/23wpDvL" class="btn" target="_blank" rel="noopener">
-            <i class="fas fa-gift"></i> Comprar Presente
-        </a>
-    </div>
-</div>
- <div class="gift-card">
-    <div class="gift-image">
-        <img src="https://drive.google.com/thumbnail?id=1Kk6YoZO6J16XlSu9n0q7_L8774jNRznC&sz=w1000" alt="TV" style="width: 100%; height: 100%; object-fit: contain;">
-    </div>
-    <div class="gift-content">
-        <h3>TV Smart 50"</h3>
-        <p class="gift-price">R$ 2 000,00</p>
-        <a href="https://mpago.la/1YVeKaW" class="btn" target="_blank" rel="noopener">
-            <i class="fas fa-gift"></i> Comprar Presente
-        </a>
-    </div>
-</div>
-        <!-- Novas sugestões -->
-         <div class="gift-card">
-    <div class="gift-image">
-        <img src="https://drive.google.com/thumbnail?id=1ns26fZUNPohNpwlQa8AF_iXt2fOxigGT&sz=w1000" alt="TV" style="width: 100%; height: 100%; object-fit: contain;">
-    </div>
-    <div class="gift-content">
-        <h3>Cota Lua de Mel</h3>
-        <p class="gift-price">R$ 1 250,00</p>
-        <a href="https://mpago.la/2KgK9ZU" class="btn" target="_blank" rel="noopener">
-            <i class="fas fa-gift"></i> Comprar Presente
-        </a>
-    </div>
-</div>
-       
-      
-           <div class="gift-card">
-    <div class="gift-image">
-        <img src="https://drive.google.com/thumbnail?id=126Oo6ZfZtW6LlOUehZy1k8uUudk3WxyX&sz=w1000" alt="TV" style="width: 100%; height: 100%; object-fit: contain;">
-    </div>
-    <div class="gift-content">
-        <h3>Micro ondas</h3>
-        <p class="gift-price">R$ 650,00</p>
-        <a href="https://mpago.la/2t7hffq" class="btn" target="_blank" rel="noopener">
-            <i class="fas fa-gift"></i> Comprar Presente
-        </a>
-    </div>
-</div>
-           <div class="gift-card">
-    <div class="gift-image">
-        <img src="https://drive.google.com/thumbnail?id=1IrKWhs4pWzF33OpZy8XAv775QVyUQSAi&sz=w1000" alt="Toalha" style="width: 100%; height: 100%; object-fit: contain;">
-    </div>
-    <div class="gift-content">
-        <h3>Toalha de banho</h3>
-        <p class="gift-price">R$ 450,00</p>
-        <a href="https://mpago.la/1D7grts" class="btn" target="_blank" rel="noopener">
-            <i class="fas fa-gift"></i> Comprar Presente
-        </a>
-    </div>
-</div>
-           <div class="gift-card">
-    <div class="gift-image">
-        <img src="https://drive.google.com/thumbnail?id=1Dv1_GsTtv84jl4rHly99Hrz3dfLbpXt1&sz=w1000" alt="TV" style="width: 100%; height: 100%; object-fit: contain;">
-    </div>
-    <div class="gift-content">
-        <h3>Cama de casal</h3>
-        <p class="gift-price">R$ 2 430,00</p>
-        <a href="https://mpago.la/1WHNbQJ" class="btn" target="_blank" rel="noopener">
-            <i class="fas fa-gift"></i> Comprar Presente
-        </a>
-    </div>
-</div>
-        <div class="gift-card">
-    <div class="gift-image">
-        <img src="https://drive.google.com/thumbnail?id=1oEUujE815vB_Vy9KBRTNE7dhlKiJz0-g&sz=w1000" alt="TV" style="width: 100%; height: 100%; object-fit: contain;">
-    </div>
-    <div class="gift-content">
-        <h3>Geladeira</h3>
-        <p class="gift-price">R$ 4 500,00</p>
-        <a href="https://mpago.la/1ovNVBe" class="btn" target="_blank" rel="noopener">
-            <i class="fas fa-gift"></i> Comprar Presente
-        </a>
-    </div>
-</div>
                 </div>
-                
+    <section id="pix" class="hero">           
                 <div class="pix-section">
     <h3><i class="fas fa-mobile-alt"></i> Presente via PIX</h3>
     <p>Prefere contribuir com qualquer valor? Use nossa chave PIX!</p>
-    <div class="pix-info" style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-        <span id="pix-key" style="word-break: break-all;">
-            <strong>Chave PIX:</strong> 00020101021126580014br.gov.bcb.pix01361817bdab-5585-4a83-9b29-e65fd7fb14085204000053039865802BR5922ELIO SURACI PICCHIOTTI6009SAO PEDRO62070503***63046354
-        </span>
-        <button id="copy-pix-btn" class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 1rem;">
+    
+    <div class="pix-info" style="
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+">
+    <span id="pix-key" style="
+        flex: 1 1 320px;
+        min-width: 240px;
+        word-break: break-word;
+        line-height: 1.3;
+    ">
+        <strong>Chave PIX:</strong> casamentofabioepati@gmail.com
+    </span>
+
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <button id="copy-pix-btn" type="button" class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 1rem; white-space: nowrap;">
             <i class="fas fa-copy"></i> Copiar
         </button>
-        <span id="copy-success" style="display:none; color: var(--verde-oliva); font-size: 0.95rem; margin-left: 0.5rem;">Copiado!</span>
+<span id="copy-success" style="display:none; color: var(--amarelo-claro); font-size: 0.95rem;">Copiado!</span>
     </div>
+</div>
+
     <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
         Qualquer valor será recebido com muito carinho e gratidão! ♡
     </p>
 </div>
             </div>
         </div>
-
+</section> 
         
     </section>
 <section id="mural" class="section" style="background: var(--branco); margin-top: 3rem;">
@@ -1045,8 +810,8 @@ modalHoteis.onclick = function(e) {
 </section>
     <footer>
         <div class="container">
-            <div class="footer-logo fade-in">J ♡ E</div>
-            <p class="fade-in">Celebrando nosso amor em 08 de Novembro de 2025</p>
+            <div class="footer-logo fade-in">F ♡ P</div>
+            <p class="fade-in">Celebrando nosso amor em 28 de Março de 2026</p>
             <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem;">
                 © 2025 Casamento Fábio e Patty - Feito com ♡
             </p>
@@ -1087,26 +852,72 @@ modalHoteis.onclick = function(e) {
             observer.observe(el);
         });
 
-        // PIX copy button functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const copyBtn = document.getElementById('copy-pix-btn');
-    const pixKeySpan = document.getElementById('pix-key');
-    const successMsg = document.getElementById('copy-success');
-    if (copyBtn && pixKeySpan) {
-        copyBtn.addEventListener('click', function() {
-            // Copia apenas o código PIX sem o texto "Chave PIX:"
-            const pixKey = "00020101021126580014br.gov.bcb.pix01361817bdab-5585-4a83-9b29-e65fd7fb14085204000053039865802BR5922ELIO SURACI PICCHIOTTI6009SAO PEDRO62070503***63046354";
-            navigator.clipboard.writeText(pixKey).then(() => {
-                if (successMsg) {
-                    successMsg.style.display = 'inline';
-                    setTimeout(() => {
-                        successMsg.style.display = 'none';
-                    }, 2000);
+        // PIX copy button functionality (robusto: funciona em https/localhost e tem fallback)
+        document.addEventListener('DOMContentLoaded', function () {
+            const copyBtn = document.getElementById('copy-pix-btn');
+            const successMsg = document.getElementById('copy-success');
+            const pixKey = "casamentofabioepati@gmail.com";
+
+            if (!copyBtn) return;
+
+            // Evita qualquer comportamento de submit acidental
+            copyBtn.setAttribute('type', 'button');
+
+            function showCopyStatus(ok, message) {
+                if (!successMsg) return;
+                successMsg.textContent = message || (ok ? 'Copiado!' : 'Não foi possível copiar');
+                successMsg.style.display = 'inline';
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 2200);
+            }
+
+            function fallbackCopy(text) {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                ta.setAttribute('readonly', '');
+                ta.style.position = 'fixed';
+                ta.style.left = '-9999px';
+                ta.style.top = '-9999px';
+                document.body.appendChild(ta);
+                ta.select();
+                ta.setSelectionRange(0, ta.value.length);
+                let ok = false;
+                try {
+                    ok = document.execCommand('copy');
+                } catch (e) {
+                    ok = false;
+                }
+                document.body.removeChild(ta);
+                return ok;
+            }
+
+            copyBtn.addEventListener('click', async function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                console.log('[PIX] copiar clicado. secureContext=', window.isSecureContext, 'hostname=', location.hostname);
+
+                // 1) Tenta Clipboard API (pode funcionar em localhost/127.0.0.1 dependendo do navegador)
+                try {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        await navigator.clipboard.writeText(pixKey);
+                        showCopyStatus(true, 'Copiado!');
+                        return;
+                    }
+                } catch (err) {
+                    console.warn('[PIX] Clipboard API falhou, usando fallback.', err);
+                }
+
+                // 2) Fallback
+                const ok = fallbackCopy(pixKey);
+                showCopyStatus(ok, ok ? 'Copiado!' : 'Copie manualmente');
+
+                if (!ok) {
+                    console.warn('[PIX] fallbackCopy falhou. Tente selecionar e copiar manualmente:', pixKey);
                 }
             });
         });
-    }
-});
 
         // Header background change on scroll
         window.addEventListener('scroll', () => {
@@ -1184,6 +995,11 @@ document.addEventListener('DOMContentLoaded', function() {
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
 
+
+  // ✅ Identificador do mural deste casamento (troque aqui quando reutilizar o site para outro evento)
+  const EVENTO_ID = "casamento-fabio-e-patty-2026";
+  // Todas as mensagens ficam isoladas por evento em: murais/<EVENTO_ID>/mural
+  const muralRef = db.ref(`murais/${EVENTO_ID}/mural`);
 </script>
 <script>
 document.getElementById('mural-form').addEventListener('submit', function(e) {
@@ -1191,13 +1007,13 @@ document.getElementById('mural-form').addEventListener('submit', function(e) {
   const nome = document.getElementById('mural-nome').value.trim();
   const mensagem = document.getElementById('mural-msg').value.trim();
   if (nome && mensagem) {
-    db.ref('mural').push({ nome, mensagem, data: Date.now() });
+    muralRef.push({ nome, mensagem, createdAt: firebase.database.ServerValue.TIMESTAMP });
     this.reset();
   }
 });
 
 // Atualiza mural em tempo real
-db.ref('mural').on('value', function(snapshot) {
+muralRef.on('value', function(snapshot) {
   const lista = document.getElementById('mural-lista');
   lista.innerHTML = '';
   const mensagens = [];
@@ -1207,11 +1023,16 @@ db.ref('mural').on('value', function(snapshot) {
   // Mostra as mais recentes primeiro
   mensagens.reverse().forEach(msg => {
     const div = document.createElement('div');
-    div.style.background = 'var(--cream)';
+    div.style.background = '#F5EEFB';
     div.style.borderRadius = '10px';
     div.style.padding = '1rem';
     div.style.marginBottom = '1rem';
-    div.innerHTML = `<strong>${msg.nome}</strong><br>${msg.mensagem}`;
+    div.style.border = '1px solid #E3D7F0';
+div.style.boxShadow = '0 6px 18px rgba(0,0,0,0.06)';
+    div.innerHTML = `
+  <strong style="color:#5A3A73;">${msg.nome}</strong><br>
+  <span style="opacity:0.9;">${msg.mensagem}</span>
+`;
     lista.appendChild(div);
   });
 });
