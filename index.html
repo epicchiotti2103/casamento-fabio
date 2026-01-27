@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casamento Fabio & Patty - 28 de Março de 2026</title>
+    <title>Casamento Fábio & Pati - 28 de Março de 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
@@ -626,7 +626,7 @@
 </div>
 
 
-            <h1>Fabio & Patty</h1>
+            <h1>Fabio & Pati</h1>
             <p class="date">28 de Março de 2026</p>
             <p class="welcome">Vamos nos casar! Junte-se a nós para uma celebração de amor, família e alegria.</p>
         </div>
@@ -638,11 +638,10 @@
             <h2 class="fade-in">Nossa História</h2>
             <div class="story-content fade-in">
                 <div class="story-text">
-                    <p>Nos conhecemos de forma inesperada, numa festa, por meio de amigos em comum — um encontro simples, mas que mudaria tudo. Desde aquele primeiro olhar curioso até hoje, construímos uma história marcada por cumplicidade, afeto e muitos sorrisos.</p>
+                    <p>Nos conhecemos sem planos. Ficamos, nos afastamos, voltamos — e repetimos esse ciclo até perceber que era na verdade um caminho e que todas essas idas e vindas nos levavam para o mesmo lugar: <br> um ao outro.</p>
                     
-                    <p>São 9 anos juntos, 8 buquês conquistados, e uma espera que só fez crescer o amor. O pedido finalmente chegou em maio, num momento mágico que selou nosso amor </p>
+                    <p>Depois de muitos retiros, viagens e brigas (haha), finalmente entendemos: a gente era feito para estar junto. Essa é nossa história: não foi simples, mas foi perfeita. 💕</p>
                     
-                    <p>Agora, chegou a hora de celebrar esse amor com quem fez e faz parte da nossa caminhada — vocês. </p>
                 </div>
                 
                 <div class="photo-grid">
@@ -680,9 +679,9 @@
                     <h3>Data & Horário</h3>
                     <p>
     <strong>28 de Março de 2026</strong><br>
-    Cerimônia às 12h*
+    Cerimônia às 11:30*
     <br>
-    <span style="font-size: 0.88rem; color: var(--marrom-elegante); font-style: italic;">*Cerimonia irá iniciar nesse horário, ideal chegar antes</span>
+    <span style="font-size: 0.88rem; color: var(--marrom-elegante); font-style: italic;"></span>
 </p>
 </div>
                 
@@ -759,8 +758,10 @@
     <section id="pix" class="hero">           
                 <div class="pix-section">
     <h3><i class="fas fa-mobile-alt"></i> Presente via PIX</h3>
-    <p>Prefere contribuir com qualquer valor? Use nossa chave PIX!</p>
-    
+    <p>Sua presença já é o maior presente. Mas se desejar nos dar algo, gostaríamos daqueles que nos propiciem memórias inesquecíveis - nossa Lua de Mel na Europa. </p>
+    <p>Também temos uma lista de presentes disponível.</p>
+    <p>Aqui está o nosso pix, obrigado por contribuir com a nossa história.</p>
+
     <div class="pix-info" style="
     display: flex;
     align-items: center;
@@ -797,7 +798,8 @@
 <section id="mural" class="section" style="background: var(--branco); margin-top: 3rem;">
   <div class="container">
      <h2 class="fade-in">💌 Participe do nosso mural, deixe seu recado</h2>
-    <p style="text-align:center; color:var(--terracota); font-size:1.2rem; margin-bottom:2rem;">A gente vai adorar ler o que você tem a dizer. Pode mandar abraço, história engraçada ou um simples “viva os noivos”! 💕</p>
+    <p style="text-align:center; color:var(--terracota); font-size:1.2rem; margin-bottom:2rem;">Deixa aqui seu abraça, histórias engraçadas, piadas ruins ou aquele "Viva os noivos" que a gente adora. 
+        <br>Aqui tem espaço para todo o seu carinho💕</p>
     <form id="mural-form" style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: 0 auto;">
       <input type="text" id="mural-nome" placeholder="Seu nome" required style="padding: 1rem; border-radius: 10px; border: 1px solid var(--cream);">
       <textarea id="mural-msg" placeholder="Sua mensagem" required style="padding: 1rem; border-radius: 10px; border: 1px solid var(--cream);"></textarea>
@@ -867,27 +869,54 @@
                 if (!successMsg) return;
                 successMsg.textContent = message || (ok ? 'Copiado!' : 'Não foi possível copiar');
                 successMsg.style.display = 'inline';
+                // For screen readers
+                successMsg.setAttribute('aria-live', 'polite');
                 setTimeout(() => {
                     successMsg.style.display = 'none';
                 }, 2200);
             }
 
-            function fallbackCopy(text) {
+            async function tryCopy(text) {
+                // 1) Tenta Clipboard API
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    try {
+                        await navigator.clipboard.writeText(text);
+                        console.log('[PIX] navigator.clipboard.writeText ok');
+                        return true;
+                    } catch (err) {
+                        console.warn('[PIX] Clipboard API falhou:', err);
+                        // continua para fallback
+                    }
+                }
+
+                // 2) Fallback mais robusto para execCommand
                 const ta = document.createElement('textarea');
                 ta.value = text;
+                // readonly evita teclado virtual em alguns mobiles
                 ta.setAttribute('readonly', '');
-                ta.style.position = 'fixed';
+                ta.style.position = 'absolute';
                 ta.style.left = '-9999px';
-                ta.style.top = '-9999px';
+                ta.style.top = '0';
                 document.body.appendChild(ta);
+
+                // Garantir foco e seleção (melhora compatibilidade no Safari)
+                ta.focus();
                 ta.select();
-                ta.setSelectionRange(0, ta.value.length);
+                try {
+                    ta.setSelectionRange(0, ta.value.length);
+                } catch (e) {
+                    // some browsers may throw, ignore
+                }
+
                 let ok = false;
                 try {
                     ok = document.execCommand('copy');
+                    console.log('[PIX] execCommand(copy) ->', ok);
                 } catch (e) {
+                    console.warn('[PIX] execCommand falhou:', e);
                     ok = false;
                 }
+
                 document.body.removeChild(ta);
                 return ok;
             }
@@ -898,23 +927,25 @@
 
                 console.log('[PIX] copiar clicado. secureContext=', window.isSecureContext, 'hostname=', location.hostname);
 
-                // 1) Tenta Clipboard API (pode funcionar em localhost/127.0.0.1 dependendo do navegador)
-                try {
-                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                        await navigator.clipboard.writeText(pixKey);
-                        showCopyStatus(true, 'Copiado!');
-                        return;
+                const ok = await tryCopy(pixKey);
+                if (ok) {
+                    showCopyStatus(true, 'Copiado!');
+                } else {
+                    showCopyStatus(false, 'Copie manualmente');
+                    // Seleciona o texto visível para facilitar cópia manual
+                    try {
+                        const span = document.getElementById('pix-key');
+                        if (span) {
+                            // cria seleção para o usuário copiar manualmente
+                            const range = document.createRange();
+                            range.selectNodeContents(span);
+                            const sel = window.getSelection();
+                            sel.removeAllRanges();
+                            sel.addRange(range);
+                        }
+                    } catch (e) {
+                        // ignore
                     }
-                } catch (err) {
-                    console.warn('[PIX] Clipboard API falhou, usando fallback.', err);
-                }
-
-                // 2) Fallback
-                const ok = fallbackCopy(pixKey);
-                showCopyStatus(ok, ok ? 'Copiado!' : 'Copie manualmente');
-
-                if (!ok) {
-                    console.warn('[PIX] fallbackCopy falhou. Tente selecionar e copiar manualmente:', pixKey);
                 }
             });
         });
